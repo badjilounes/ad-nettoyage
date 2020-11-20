@@ -1,0 +1,11 @@
+@import "~@angular/material/theming";
+
+@mixin navigation-theme($theme) {
+  $accent: map-get($theme, accent);
+  $is-dark-theme: map-get($theme, is-dark);
+
+  .mat-list-base .mat-list-item.router-link-active {
+    background: rgba(mat-color($accent, default), 0.15);
+    color: lighten(mat-color($accent, default), if($is-dark-theme, 25%, 0));
+  }
+}

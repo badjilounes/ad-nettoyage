@@ -1,0 +1,14 @@
+<mat-drawer-container class="drawer-container">
+  <mat-drawer #drawer class="drawer" fixedInViewport [mode]="'push'" [position]="'end'">
+    <mat-nav-list>
+      <a mat-list-item class="mat-list-item" *ngFor="let route of (routes$| async)" [routerLink]="['/' + route.path]"
+        routerLinkActive="router-link-active">
+        {{route.data?.title}}</a>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-toolbar [routes]="routes$| async" (drawerToggled)="drawer.toggle()">
+    </app-toolbar>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

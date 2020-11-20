@@ -1,0 +1,46 @@
+app-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.docs-carousel-content {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  outline: none;
+}
+
+.docs-carousel-content-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+[carousel-item] {
+  flex-shrink: 0;
+  transition: transform 0.5s ease-in-out;
+}
+
+button.docs-carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+
+  &.docs-carousel-nav-prev {
+    left: 40px;
+  }
+
+  &.docs-carousel-nav-next {
+    right: 40px;
+  }
+}
+
+.carousel-indicator-container {
+  z-index: 1;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

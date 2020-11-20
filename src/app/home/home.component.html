@@ -1,0 +1,10 @@
+<main class="docs-homepage-promo">
+  <div class="docs-homepage-featured-components docs-homepage-carousel-row">
+    <app-carousel [aria-label]="'Slides'">
+      <div *ngFor="let slide of slides" carousel-item class='docs-featured-components-carousel-item'>
+        <div class="docs-homepage-img-container" [style]="'background-image: url(' + slide + ')'">
+        </div>
+      </div>
+    </app-carousel>
+  </div>
+</main>

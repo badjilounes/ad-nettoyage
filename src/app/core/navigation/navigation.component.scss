@@ -1,0 +1,15 @@
+.drawer-container {
+  height: 100%;
+}
+
+.drawer {
+  width: 200px;
+}
+
+.drawer .mat-toolbar {
+  background: inherit;
+}
+
+.mat-drawer-content {
+  flex-direction: column;
+}
