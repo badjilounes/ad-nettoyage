@@ -1,9 +1,14 @@
-<main class="docs-homepage-promo">
-  <div class="docs-homepage-featured-components docs-homepage-carousel-row">
+<main class="home-container">
+  <div class="carousel-container">
     <app-carousel [aria-label]="'Slides'">
-      <div *ngFor="let slide of slides" carousel-item class='docs-featured-components-carousel-item'>
-        <div class="docs-homepage-img-container" [style]="'background-image: url(' + slide + ')'">
+      <div *ngFor="let slide of slides" carousel-item class="carousel-item">
+        <div class="carousel-img" [style]="'background-image: url(' + slide + ')'">
         </div>
+      </div>
+      <div class="overlay-container">
+        <a mat-stroked-button type="button" [routerLink]="'/devis-gratuit'">
+          {{'home.free-quote' | translate}}
+        </a>
       </div>
     </app-carousel>
   </div>

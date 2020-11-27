@@ -41,14 +41,11 @@ export class Carousel implements AfterContentInit {
   @ContentChildren(CarouselItem) items: QueryList<CarouselItem>;
   @ViewChild('contentWrapper') wrapper: ElementRef;
   position = 0;
-  showPrevArrow = false;
-  showNextArrow = true;
-  visibleItems: number;
-  shiftWidth: number;
-  itemsArray: CarouselItem[];
+
+  itemsArray: CarouselItem[] = [];
   private focusKeyManager: FocusKeyManager<CarouselItem>;
 
-  constructor(private readonly element: ElementRef) {
+  constructor() {
   }
 
   private _index = 0;
@@ -59,8 +56,6 @@ export class Carousel implements AfterContentInit {
 
   set index(i: number) {
     this._index = i;
-    this.showPrevArrow = i > 0;
-
   }
 
   onKeydown(event: KeyboardEvent) {
@@ -81,7 +76,7 @@ export class Carousel implements AfterContentInit {
         break;
 
       case 'ArrowRight':
-        if (this.focusKeyManager.activeItemIndex === this.index + this.visibleItems - 1) {
+        if (this.focusKeyManager.activeItemIndex === this.index - 1) {
           this.next();
         }
         this.focusKeyManager.setNextItemActive();
@@ -93,23 +88,13 @@ export class Carousel implements AfterContentInit {
     }
   }
 
-  onResize() {
-    this._resizeCarousel();
-  }
-
   ngAfterContentInit(): void {
     this.focusKeyManager =
       new FocusKeyManager<CarouselItem>(this.items) as FocusKeyManager<CarouselItem>;
-    // timeout to make sure clientWidth is defined
-    setTimeout(() => {
-      this.itemsArray = this.items.toArray();
-      this.shiftWidth = this.items.first.element.nativeElement.clientWidth;
-      this._resizeCarousel();
-    });
+    this.itemsArray = this.items.toArray();
   }
 
   next() {
-    // prevent keyboard navigation from going out of bounds
     const isOutOfBounds = this.index === this.items.length - 1;
     if (isOutOfBounds) {
       this._shiftItems(-(this.items.length - 1));
@@ -119,7 +104,6 @@ export class Carousel implements AfterContentInit {
   }
 
   previous() {
-    // prevent keyboard navigation from going out of bounds
     const isOutOfBounds = this.index === 0;
     if (isOutOfBounds) {
       this._shiftItems(this.items.length - 1);
@@ -144,28 +128,6 @@ export class Carousel implements AfterContentInit {
     this.items.forEach((item: CarouselItem) => {
       item.element.nativeElement.style.transform = `translateX(-${this.position}%)`;
     });
-  }
-
-  private _resizeCarousel() {
-    const newVisibleItems = Math.max(1, Math.min(
-      Math.floor((this.element.nativeElement.offsetWidth) / this.shiftWidth),
-      this.items.length));
-    if (this.visibleItems !== newVisibleItems) {
-      if (this.visibleItems < newVisibleItems) {
-        const shiftIndex = this.index - (this.items.length - this.visibleItems) + 1;
-        if (shiftIndex > 0) {
-          this._shiftItems(-shiftIndex);
-        }
-      } else {
-        if (this.focusKeyManager.activeItemIndex && this.focusKeyManager.activeItemIndex >
-          this.index + newVisibleItems - 1) {
-          this.focusKeyManager.setPreviousItemActive();
-          this._updateItemTabIndices();
-        }
-      }
-      this.visibleItems = newVisibleItems;
-      this.showNextArrow = this.index < (this.items.length - this.visibleItems);
-    }
   }
 }
 

@@ -1,3 +1,5 @@
+@import "~@angular/material/theming";
+
 @mixin carousel-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -5,8 +7,11 @@
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
 
-  .docs-carousel-nav.mat-mini-fab {
-    background: mat-color($background, background);
-    color: mat-color($foreground, secondary-text);
+  .carousel-indicator-container .mat-mini-fab.selected {
+    background-color: mat-color($accent, secondary-text);
+  }
+
+  .carousel-indicator-container .mat-mini-fab:not(.selected) {
+    background-color: lighten(mat-color($background, background), 10%);
   }
 }

@@ -1,20 +1,18 @@
-<div #contentWrapper (keyup)="onKeydown($event)" (window:resize)="onResize()" class="docs-carousel-content-wrapper"
-  role="region">
-  <button (click)="previous()" aria-hidden="true" tabindex="-1" class="docs-carousel-nav docs-carousel-nav-prev"
-    mat-mini-fab aria-label="previous">
+<div #contentWrapper (keyup)="onKeydown($event)" class="carousel-content-wrapper" role="region">
+  <button (click)="previous()" aria-hidden="true" tabindex="-1" class="carousel-nav carousel-nav-prev" mat-mini-fab
+    aria-label="previous" color="accent">
     <mat-icon>navigate_before</mat-icon>
   </button>
-  <div class="docs-carousel-content" role="list" tabindex="0">
+  <div class="carousel-content" role="list" tabindex="0">
     <ng-content></ng-content>
     <div class="carousel-indicator-container">
-      <button *ngFor="let item of items;let i = index" mat-icon-button (click)="goTo(i)" aria-hidden="true"
-        tabindex="-1" [color]="index === i ? 'primary' : 'basic'">
-        <mat-icon>favorite</mat-icon>
+      <button *ngFor="let item of items;let i = index" mat-mini-fab (click)="goTo(i)" aria-hidden="true" tabindex="-1"
+        [class]="index === i ? 'selected' : ''">
       </button>
     </div>
   </div>
-  <button (click)="next()" aria-hidden="true" tabindex="-1" class="docs-carousel-nav docs-carousel-nav-next"
-    mat-mini-fab aria-label="next">
+  <button (click)="next()" aria-hidden="true" tabindex="-1" class="carousel-nav carousel-nav-next" mat-mini-fab
+    aria-label="next" color="accent">
     <mat-icon>navigate_next</mat-icon>
   </button>
 </div>

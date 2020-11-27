@@ -1,34 +1,32 @@
-import { LayoutModule } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { MatCarouselModule } from './carousel/carousel.module';
+import { MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { MaterialModule } from './material.module';
+import { AppMissingTranslationHandler } from './missing-translation.handler';
 import { NavigationComponent } from './navigation/navigation.component';
 import { RoutingService } from './routing/routing.service';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 
-const modules = [
-  BrowserModule,
-  BrowserAnimationsModule,
-  RouterModule,
-  CommonModule,
-  FlexLayoutModule,
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
 
-  LayoutModule,
-  MatToolbarModule,
-  MatButtonModule,
-  MatSidenavModule,
-  MatIconModule,
-  MatListModule,
-  MatCarouselModule,
+const modules = [
+  CommonModule,
+  RouterModule,
+  HttpClientModule,
+  MaterialModule,
+  TranslateModule.forRoot({
+    loader: {
+      provide: TranslateLoader,
+      useFactory: HttpLoaderFactory,
+      deps: [HttpClient]
+    },
+    missingTranslationHandler: { provide: MissingTranslationHandler, useClass: AppMissingTranslationHandler }
+  }),
 ];
 
 @NgModule({
@@ -37,13 +35,18 @@ const modules = [
     ToolbarComponent
   ],
   imports: modules,
-  exports: modules,
+  exports: [
+    MaterialModule,
+    TranslateModule,
+  ],
   providers: [RoutingService],
 })
 export class AppCoreModule {
   constructor(
+    private readonly translate: TranslateService,
     private readonly routing: RoutingService,
   ) {
+    this.translate.setDefaultLang('fr');
     this.routing.init();
   }
 }

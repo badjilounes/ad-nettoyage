@@ -22,7 +22,7 @@ export class ToolbarComponent implements OnInit {
       shareReplay()
     );
 
-  logo = 'https://www.societe-nettoyage-lyon.com/wp-content/uploads/2017/09/cropped-Logo-6-Ok-1.png';
+  logo = 'assets/images/logo.jpg';
 
   constructor(
     private readonly breakpointObserver: BreakpointObserver,

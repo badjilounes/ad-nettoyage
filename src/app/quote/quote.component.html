@@ -1,0 +1,51 @@
+<mat-card>
+  <form [formGroup]="form" (submit)="send()">
+    <mat-form-field>
+      <mat-label>{{'quote.name.label' | translate}}</mat-label>
+      <input matInput formControlName="name" required>
+      <mat-error *ngIf="form.controls.name.hasError('required')">
+        {{'quote.name.required.error.prefix'| translate }}<strong>{{'quote.name.required.error.suffix' | translate}}</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{'quote.society.label' | translate}}</mat-label>
+      <input matInput formControlName="society">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{'quote.email.label' | translate}}</mat-label>
+      <input type="email" matInput formControlName="email" [placeholder]="'quote.email.placeholder' | translate"
+        required>
+      <mat-error *ngIf="form.controls.email.hasError('email') && !form.controls.email.hasError('required')">
+        {{'quote.valid-mail.error'| translate}}
+      </mat-error>
+      <mat-error *ngIf="form.controls.email.hasError('required')">
+        {{'quote.email.required.error.prefix'| translate }}<strong>{{'quote.email.required.error.suffix' | translate}}</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{'quote.phone.label' | translate}}</mat-label>
+      <input matInput formControlName="phone">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>{{'quote.date.label' | translate}}</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{'quote.comments.label' | translate}}</mat-label>
+      <textarea matInput cdkTextareaAutosize formControlName="comments"></textarea>
+    </mat-form-field>
+
+    <div class="submit-container">
+      <button type="submit" mat-button color="accent">
+        {{'quote.send-message' | translate}}
+      </button>
+    </div>
+  </form>
+</mat-card>

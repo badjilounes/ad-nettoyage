@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AppRouteData } from './app-route-data.interface';
 import { AppRoute } from './app-route.interface';
@@ -14,6 +15,7 @@ export class RoutingService {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly title: Title,
+    private readonly translate: TranslateService,
   ) {
 
   }
@@ -61,7 +63,11 @@ export class RoutingService {
     return (a.data && a.data.order || Number.MAX_SAFE_INTEGER) - (b.data && b.data.order || Number.MAX_SAFE_INTEGER);
   }
 
-  private setTitle(data: AppRouteData): void {
-    this.title.setTitle(`Ad Nettoyage - ${data?.title}`);
+  private setTitle(data: AppRouteData) {
+    const promises = [this.translate.get('title').toPromise<string>()];
+    if (data?.title) {
+      promises.push(this.translate.get(data.title).toPromise<string>());
+    }
+    Promise.all(promises).then(([appTitle, routeTitle]) => this.title.setTitle(`${appTitle} - ${routeTitle}`));
   }
 }

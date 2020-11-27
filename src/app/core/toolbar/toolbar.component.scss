@@ -8,19 +8,14 @@
 .mat-toolbar {
   padding: 0 20px;
   transition: background 0.1s ease-in-out, margin-top 0.15s ease-in-out, opacity 0.15s ease-in-out;
-  &.handset {
-    background: rgba(0, 0, 0, 0.75);
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-
-  &:not(.handset) {
-    background: rgba(0, 0, 0, 0.4);
-    background-color: rgba(0, 0, 0, 0.75);
-  }
 
   a {
     display: inline-block;
     padding: 0 10px;
+    text-decoration: none;
+    line-height: 90px;
+    font-weight: 500;
+    font-size: 16px;
   }
 
   img {

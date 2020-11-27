@@ -1,10 +1,10 @@
-<mat-toolbar [ngClass]="{handset: isHandset$| async}" fxFlex="1 1 100%">
+<mat-toolbar [ngClass]="{handset: isHandset$| async}">
 
   <img width="153px" height="40px" [src]="logo" alt="Site logo">
 
-  <div fxFlex="1 1 100%" fxLayoutAlign="end">
+  <div>
 
-    <div [ngSwitch]="isHandset$|async" fxLayoutAlign="end">
+    <div [ngSwitch]="isHandset$|async">
       <div *ngSwitchCase="true">
         <button type="button" aria-label="Toggle drawer" mat-icon-button (click)="drawerToggled.emit()">
           <mat-icon aria-label="Drawer toggle icon">menu</mat-icon>
@@ -13,7 +13,7 @@
       <div *ngSwitchDefault>
         <a mat-list-item class="mat-list-item" *ngFor="let route of routes" [routerLink]="['/' + route.path]"
           [hidden]="isHandset$|async" routerLinkActive="router-link-active">
-          {{route.data?.title}}</a>
+          {{route.data?.title| translate}}</a>
       </div>
     </div>
 

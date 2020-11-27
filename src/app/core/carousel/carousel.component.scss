@@ -1,46 +1,121 @@
+@mixin hide() {
+  transition: all 0.2s ease-in-out;
+  bottom: 0;
+  opacity: 0;
+}
+
+@mixin show-indicator() {
+  bottom: 30px;
+  opacity: 1;
+}
+
+@mixin show-arrow-left() {
+  left: 10px;
+  opacity: 1;
+}
+
+@mixin show-arrow-right() {
+  right: 10px;
+  opacity: 1;
+}
+
 app-carousel {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.docs-carousel-content {
-  display: flex;
-  flex-direction: row;
-  overflow: hidden;
-  outline: none;
-}
-
-.docs-carousel-content-wrapper {
+.carousel-content-wrapper {
   position: relative;
   width: 100%;
-}
 
-[carousel-item] {
-  flex-shrink: 0;
-  transition: transform 0.5s ease-in-out;
-}
-
-button.docs-carousel-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1;
-
-  &.docs-carousel-nav-prev {
-    left: 40px;
+  & .carousel-content {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    outline: none;
   }
 
-  &.docs-carousel-nav-next {
-    right: 40px;
+  & [carousel-item] {
+    flex-shrink: 0;
+    transition: transform 0.5s ease-in-out;
+    text-align: center;
+
+    & .carousel-img {
+      overflow: hidden;
+      height: 650px;
+      width: 100%;
+      min-height: 650px;
+
+      background-repeat: no-repeat;
+      background-position: top;
+      background-size: cover;
+
+      transition: 0.3s ease-in-out;
+    }
+  }
+
+  & button.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+
+    &.carousel-nav-prev {
+      @include hide();
+      left: 0;
+    }
+
+    &.carousel-nav-next {
+      @include hide();
+      right: 0;
+    }
+  }
+
+  & .carousel-indicator-container {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    @include hide();
+
+    & button {
+      &.selected {
+        height: 20px;
+        width: 20px;
+        margin: 0 5px;
+      }
+
+      &:not(.selected) {
+        transition: all 0.2s ease-in-out;
+        height: 10px;
+        width: 10px;
+        margin: 5px 10px;
+
+        &:hover {
+          height: 20px;
+          width: 20px;
+          margin: 0 5px;
+        }
+      }
+    }
   }
 }
 
-.carousel-indicator-container {
-  z-index: 1;
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
+app-carousel:hover {
+  & button.carousel-nav {
+    &.carousel-nav-prev {
+      @include show-arrow-left();
+    }
+
+    &.carousel-nav-next {
+      @include show-arrow-right();
+    }
+  }
+
+  & .carousel-indicator-container {
+    @include show-indicator();
+  }
 }
