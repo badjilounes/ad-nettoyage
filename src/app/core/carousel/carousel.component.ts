@@ -1,6 +1,7 @@
 import { FocusableOption, FocusKeyManager } from '@angular/cdk/a11y';
 import {
   AfterContentInit,
+  AfterViewInit,
   Component,
   ContentChildren,
   Directive,
@@ -11,7 +12,7 @@ import {
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
-
+import * as Hammer from 'hammerjs';
 
 @Directive({
   selector: '[carousel-item]',
@@ -35,7 +36,7 @@ export class CarouselItem implements FocusableOption {
   styleUrls: ['./carousel.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class Carousel implements AfterContentInit {
+export class Carousel implements AfterContentInit, AfterViewInit {
   @Input('aria-label') ariaLabel: string;
   @Input() showArrows = true;
   @ContentChildren(CarouselItem) items: QueryList<CarouselItem>;
@@ -82,6 +83,17 @@ export class Carousel implements AfterContentInit {
     this.focusKeyManager =
       new FocusKeyManager<CarouselItem>(this.items) as FocusKeyManager<CarouselItem>;
     this.itemsArray = this.items.toArray();
+  }
+
+  ngAfterViewInit() {
+    const hammer = new Hammer(this.wrapper.nativeElement);
+    hammer.on('swipeleft swiperight', event => {
+      if (event.type === 'swiperight') {
+        this.previous();
+      } else if (event.type === 'swipeleft') {
+        this.next();
+      }
+    });
   }
 
   next() {
