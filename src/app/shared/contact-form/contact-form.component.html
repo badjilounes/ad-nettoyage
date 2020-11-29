@@ -1,0 +1,55 @@
+<mat-card>
+
+  <a mat-raised-button color="accent" class="phone" [href]="'tel:' + ('contact-form.phone' | translate)">
+    <mat-icon>phone</mat-icon>
+    {{'contact-form.phone' | translate}}
+  </a>
+
+  <h2 class="form-info">{{'contact-form.form-info'| translate}}</h2>
+
+  <form [formGroup]="form" (submit)="send()">
+    <mat-form-field>
+      <input matInput formControlName="name" required [placeholder]="'contact-form.name.label' | translate">
+      <mat-error *ngIf="form.controls.name.hasError('required')">
+        {{'contact-form.name.required.error.prefix'| translate }}<strong>{{'contact-form.name.required.error.suffix' | translate}}</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="society" [placeholder]="'contact-form.society.label' | translate">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="email" matInput formControlName="email" [placeholder]="'contact-form.email.label' | translate"
+        required>
+      <mat-error *ngIf="form.controls.email.hasError('email') && !form.controls.email.hasError('required')">
+        {{'contact-form.valid-mail.error'| translate}}
+      </mat-error>
+      <mat-error *ngIf="form.controls.email.hasError('required')">
+        {{'contact-form.email.required.error.prefix'| translate }}<strong>{{'contact-form.email.required.error.suffix' | translate}}</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="phone" [placeholder]="'contact-form.phone.label' | translate">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <input matInput [ngxMatDatetimePicker]="picker" [placeholder]="'contact-form.date.label' | translate"
+        formControlName="date" [min]="minDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput cdkTextareaAutosize formControlName="comments"
+        [placeholder]="'contact-form.comments.label' | translate"></textarea>
+    </mat-form-field>
+
+    <div class="submit-container">
+      <button type="submit" mat-button color="accent">
+        {{'contact-form.send-message' | translate}}
+      </button>
+    </div>
+  </form>
+</mat-card>

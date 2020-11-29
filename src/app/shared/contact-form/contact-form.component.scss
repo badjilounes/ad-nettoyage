@@ -1,0 +1,36 @@
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-card {
+  min-width: 300px;
+  max-width: 350px;
+  margin: 0 auto;
+  height: min-content;
+}
+
+.submit-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
+
+  & button {
+    margin-top: 12px;
+  }
+}
+
+.phone {
+  margin: 0 auto;
+  display: flex;
+  width: min-content;
+}
+
+.form-info {
+  margin: 12px 0;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 15px;
+  text-align: center;
+  line-height: 1;
+}
