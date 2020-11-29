@@ -20,16 +20,19 @@
       .overlay-content {
         position: relative;
         height: 100%;
-        width: max-content;
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         padding-top: 100px;
-        padding-right: 20px;
-        padding-left: 20px;
+
+        div {
+          padding-right: 20px;
+          padding-left: 20px;
+        }
 
         h3 {
-          font-size: 44px;
+          font-size: 38px;
           font-weight: 900;
           text-transform: uppercase;
           height: 60px;
