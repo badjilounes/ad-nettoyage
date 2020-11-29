@@ -1,6 +1,7 @@
 import { NgxMatDateAdapter } from '@angular-material-components/datetime-picker';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import localeFr from '@angular/common/locales/fr';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -51,5 +52,6 @@ export class AppCoreModule {
     this.translate.setDefaultLang('fr');
     this.adapter.setLocale('fr-FR');
     this.routing.init();
+    registerLocaleData(localeFr);
   }
 }

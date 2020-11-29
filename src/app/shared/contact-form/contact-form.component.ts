@@ -51,7 +51,7 @@ export class ContactFormComponent implements OnInit {
     const data: MailData = this.form.value;
 
     if (data.date) {
-      data.date = this.date.transform(data.date, 'fullDate');
+      data.date = this.date.transform(data.date, 'medium');
     }
 
     const sent = await this.mailer.sendMail(data);
