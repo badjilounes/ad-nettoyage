@@ -1,0 +1,14 @@
+@import "~@angular/material/theming";
+@import "component-theme";
+
+@include mat-core();
+
+$purple-green-primary: mat-palette($mat-purple);
+$purple-green-accent: mat-palette($mat-green, A200, A100, A400);
+$purple-green-warn: mat-palette($mat-red, A200, A100, A400);
+$purple-green-theme: mat-dark-theme($purple-green-primary, $purple-green-accent, $purple-green-warn);
+
+.purple-green {
+  @include angular-material-theme($purple-green-theme);
+  @include component-theme($purple-green-theme);
+}

@@ -1,24 +1,75 @@
 :host {
   display: block;
-  margin-top: 120px;
+  min-height: 100%;
+  background-image: url("https://www.societe-nettoyage-lyon.com/wp-content/uploads/2017/09/cleaning-268112_1920.jpg");
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.mat-form-field {
-  width: 100%;
-}
-
-.mat-card {
-  max-width: 350px;
-  margin: 0 auto;
-}
-
-.submit-container {
+.quote-container {
+  opacity: 1;
+  width: 100vw;
+  min-height: 100vh;
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: flex-end;
+  background-color: rgba(0, 0, 0, 0.7);
+}
 
-  & button {
-    margin-top: 12px;
+.quote-content {
+  margin-top: 100px;
+  margin-bottom: 50px;
+  padding: 40px 20px 0 20px;
+  display: flex;
+  width: 100%;
+}
+
+.quote-content:not(.handset) {
+  max-width: 1040px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.quote-info {
+  & h1 {
+    margin-bottom: 40px;
+    padding-top: 30px;
+    font-weight: 100;
+    text-transform: none;
+    font-style: normal;
+    letter-spacing: -1.2px;
+    font-size: 35px;
   }
+
+  & p {
+    font-style: italic;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.7em;
+    margin-bottom: 32px;
+  }
+}
+
+.recommendations-container {
+  display: flex;
+  align-items: center;
+  text-align: left;
+
+  .mat-icon {
+    margin-right: 8px;
+  }
+}
+
+.quote-content.handset {
+  flex-direction: column;
+
+  & .quote-info {
+    text-align: center;
+    padding: 0 30px;
+    margin-bottom: 30px;
+  }
+}
+
+.quote-content:not(.handset) .quote-info {
+  padding: 0 40px;
+  margin-right: 20px;
 }

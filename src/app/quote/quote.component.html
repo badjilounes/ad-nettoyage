@@ -1,51 +1,17 @@
-<mat-card>
-  <form [formGroup]="form" (submit)="send()">
-    <mat-form-field>
-      <mat-label>{{'quote.name.label' | translate}}</mat-label>
-      <input matInput formControlName="name" required>
-      <mat-error *ngIf="form.controls.name.hasError('required')">
-        {{'quote.name.required.error.prefix'| translate }}<strong>{{'quote.name.required.error.suffix' | translate}}</strong>
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>{{'quote.society.label' | translate}}</mat-label>
-      <input matInput formControlName="society">
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>{{'quote.email.label' | translate}}</mat-label>
-      <input type="email" matInput formControlName="email" [placeholder]="'quote.email.placeholder' | translate"
-        required>
-      <mat-error *ngIf="form.controls.email.hasError('email') && !form.controls.email.hasError('required')">
-        {{'quote.valid-mail.error'| translate}}
-      </mat-error>
-      <mat-error *ngIf="form.controls.email.hasError('required')">
-        {{'quote.email.required.error.prefix'| translate }}<strong>{{'quote.email.required.error.suffix' | translate}}</strong>
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>{{'quote.phone.label' | translate}}</mat-label>
-      <input matInput formControlName="phone">
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>{{'quote.date.label' | translate}}</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="date">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>{{'quote.comments.label' | translate}}</mat-label>
-      <textarea matInput cdkTextareaAutosize formControlName="comments"></textarea>
-    </mat-form-field>
-
-    <div class="submit-container">
-      <button type="submit" mat-button color="accent">
-        {{'quote.send-message' | translate}}
-      </button>
+<div class="quote-container">
+  <div class="quote-content" [ngClass]="{'handset': (isHandset$| async)}">
+    <div class="quote-info">
+      <h1>Quelle valeur donnez-vous à un environnement propre ?</h1>
+      <p>Un lieu propre en dit beaucoup sur votre entreprise ou votre cadre de vie, ce devrait refléter l’image
+        d’excellence à laquelle vous aspirez. Un local propre offre un environnement sain, sécurisant pour vous, vos
+        employés ou vos visiteurs.</p>
+      <p>Nos services sont destinés à répondre aux besoins des particuliers et des professionnels. Contactez-nous dès
+        aujourd’hui !</p>
+      <div class="recommendations-container" *ngFor="let recommendation of recommendations">
+        <mat-icon color="accent">check</mat-icon>
+        {{'quote.recommendations.' + recommendation |translate}}
+      </div>
     </div>
-  </form>
-</mat-card>
+    <app-contact-form></app-contact-form>
+  </div>
+</div>

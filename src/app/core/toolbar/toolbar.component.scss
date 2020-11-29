@@ -1,27 +1,51 @@
 .mat-toolbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: 10;
   height: 100px;
+  transition: background 0.1s ease-in-out, margin-top 0.15s ease-in-out, opacity 0.15s ease-in-out;
 }
 
-.mat-toolbar {
-  padding: 0 20px;
-  transition: background 0.1s ease-in-out, margin-top 0.15s ease-in-out, opacity 0.15s ease-in-out;
+.mat-toolbar.handset .right-container a {
+  display: none;
+}
 
-  a {
+.mat-toolbar:not(.handset) {
+  & .right-container button {
+    display: none;
+  }
+
+  & .toolbar-content {
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.toolbar-content {
+  padding: 0 20px;
+  display: flex;
+  width: 100%;
+}
+
+.home-link {
+  display: flex;
+  align-self: center;
+}
+
+.right-container {
+  flex: 1;
+  text-align: end;
+
+  & * {
     display: inline-block;
+  }
+
+  & a {
     padding: 0 10px;
     text-decoration: none;
     line-height: 90px;
     font-weight: 500;
     font-size: 16px;
-  }
-
-  img {
-    display: inline-block;
-    max-height: 40px;
-    margin: auto;
-    width: auto;
   }
 }

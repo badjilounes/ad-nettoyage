@@ -37,7 +37,7 @@ export class CarouselItem implements FocusableOption {
 })
 export class Carousel implements AfterContentInit {
   @Input('aria-label') ariaLabel: string;
-  @Input() itemWidth: number;
+  @Input() showArrows = true;
   @ContentChildren(CarouselItem) items: QueryList<CarouselItem>;
   @ViewChild('contentWrapper') wrapper: ElementRef;
   position = 0;

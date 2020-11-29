@@ -1,3 +1,4 @@
+import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { LayoutModule } from '@angular/cdk/layout';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { NgModule } from '@angular/core';
@@ -29,6 +30,9 @@ const modules = [
   MatSnackBarModule,
   MatToolbarModule,
   TextFieldModule,
+  NgxMatDatetimePickerModule,
+  NgxMatTimepickerModule,
+  NgxMatNativeDateModule,
 ];
 
 @NgModule({

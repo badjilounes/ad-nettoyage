@@ -1,7 +1,6 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { BreakpointService } from '../breakpoint/breakpoint.service';
 import { AppRoute } from '../routing/app-route.interface';
 
 @Component({
@@ -16,16 +15,12 @@ export class ToolbarComponent implements OnInit {
 
   @Output() drawerToggled: EventEmitter<void> = new EventEmitter<void>();
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
+  isHandset$: Observable<boolean> = this.breakpoint.isHandset$;
 
   logo = 'assets/images/logo.jpg';
 
   constructor(
-    private readonly breakpointObserver: BreakpointObserver,
+    private readonly breakpoint: BreakpointService,
   ) { }
 
   ngOnInit(): void {

@@ -9,8 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppCoreModule } from './core/core.module';
 import { HomeComponent } from './home/home.component';
-import { QuoteComponent } from './quote/quote.component';
 import { PerformanceComponent } from './performance/performance.component';
+import { QuoteComponent } from './quote/quote.component';
+import { AppSharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { PerformanceComponent } from './performance/performance.component';
     ReactiveFormsModule,
     FlexLayoutModule,
     AppCoreModule,
+    AppSharedModule,
     AppRoutingModule,
   ],
   bootstrap: [AppComponent]

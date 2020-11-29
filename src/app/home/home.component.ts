@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { BreakpointService } from '../core/breakpoint/breakpoint.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +16,11 @@ export class HomeComponent implements OnInit {
     'https://www.societe-nettoyage-lyon.com/wp-content/uploads/2017/10/Nettoyage-Lyon-Entreprise-Societe-2-1.jpg',
   ];
 
-  constructor() { }
+  isHandset$: Observable<boolean> = this.breakpoint.isHandset$;
+
+  constructor(
+    private readonly breakpoint: BreakpointService,
+  ) { }
 
   ngOnInit(): void {
 

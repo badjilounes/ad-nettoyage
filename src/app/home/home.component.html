@@ -1,14 +1,20 @@
 <main class="home-container">
   <div class="carousel-container">
-    <app-carousel [aria-label]="'Slides'">
+    <app-carousel [aria-label]="'Slides'" [showArrows]="!(isHandset$ | async)">
       <div *ngFor="let slide of slides" carousel-item class="carousel-item">
         <div class="carousel-img" [style]="'background-image: url(' + slide + ')'">
         </div>
       </div>
       <div class="overlay-container">
-        <a mat-stroked-button type="button" [routerLink]="'/devis-gratuit'">
-          {{'home.free-quote' | translate}}
-        </a>
+        <div class="overlay-content" [ngClass]="{'handset': (isHandset$| async)}">
+          <div>
+            <h3>{{'home.overlay.title' | translate}}</h3>
+            <h1>{{'home.overlay.sub-title' | translate}}</h1>
+            <a mat-raised-button type="button" [routerLink]="'/devis-gratuit'">
+              {{'home.free-quote' | translate}}
+            </a>
+          </div>
+        </div>
       </div>
     </app-carousel>
   </div>

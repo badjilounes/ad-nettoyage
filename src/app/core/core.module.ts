@@ -1,3 +1,4 @@
+import { NgxMatDateAdapter } from '@angular-material-components/datetime-picker';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -45,8 +46,10 @@ export class AppCoreModule {
   constructor(
     private readonly translate: TranslateService,
     private readonly routing: RoutingService,
+    private readonly adapter: NgxMatDateAdapter<Date>,
   ) {
     this.translate.setDefaultLang('fr');
+    this.adapter.setLocale('fr-FR');
     this.routing.init();
   }
 }
