@@ -8,8 +8,8 @@
   "contact-form.name.label": "Nom et prénom",
   "contact-form.name.required.error.prefix": "Le nom et le prénom sont ",
   "contact-form.name.required.error.suffix": "obligatoires",
-  "contact-form.phone": "+337 63 78 41 94",
   "contact-form.phone.label": "Téléphone",
+  "contact-form.phone": "+337 63 78 41 94",
   "contact-form.send-message": "Envoyer le message",
   "contact-form.society.label": "Société",
   "contact-form.valid-mail.error": "Veuillez entrer une adresse mail valide",
@@ -25,10 +25,12 @@
   "mailer.society": "Société",
   "mailer.subject": "Demande de devis",
   "performance.title": "Nos services",
-  "quote.title": "Devis gratuit",
+  "quote.mail.error": "Une erreur est survenue lors de l'envoie de votre devis",
+  "quote.mail.ok": "Votre demande de devis a bien été prise en compte.",
   "quote.recommendations.1": "Recommandé par les Lyonnais !",
   "quote.recommendations.2": "Nos agents interviennent 7j/7 et 24h/24",
   "quote.recommendations.3": "Exigez la qualité avec notre Garantie Satisfaction",
   "quote.recommendations.4": "Contactez-nous aujourd'hui pour profiter d'une offre spéciale",
+  "quote.title": "Devis gratuit",
   "title": "Ad nettoyage"
 }
