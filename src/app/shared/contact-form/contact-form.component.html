@@ -38,7 +38,7 @@
       <input matInput [ngxMatDatetimePicker]="picker" [placeholder]="'contact-form.date.label' | translate"
         formControlName="date" [min]="minDate">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+      <ngx-mat-datetime-picker #picker [color]="'accent'"></ngx-mat-datetime-picker>
     </mat-form-field>
 
     <mat-form-field>
