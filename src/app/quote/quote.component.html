@@ -1,12 +1,9 @@
 <div class="quote-container">
   <div class="quote-content" [ngClass]="{'handset': (isHandset$| async)}">
     <div class="quote-info">
-      <h1>Quelle valeur donnez-vous à un environnement propre ?</h1>
-      <p>Un lieu propre en dit beaucoup sur votre entreprise ou votre cadre de vie, ce devrait refléter l’image
-        d’excellence à laquelle vous aspirez. Un local propre offre un environnement sain, sécurisant pour vous, vos
-        employés ou vos visiteurs.</p>
-      <p>Nos services sont destinés à répondre aux besoins des particuliers et des professionnels. Contactez-nous dès
-        aujourd’hui !</p>
+      <h1>{{'quote.info.title'| translate}}</h1>
+      <p>{{'quote.paragraph.1'| translate}}</p>
+      <p>{{'quote.paragraph.2'| translate}}</p>
       <div class="recommendations-container" *ngFor="let recommendation of recommendations">
         <mat-icon color="accent">check</mat-icon>
         {{'quote.recommendations.' + recommendation |translate}}
