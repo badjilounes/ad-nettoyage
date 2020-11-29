@@ -60,25 +60,15 @@ export class Carousel implements AfterContentInit {
 
   onKeydown(event: KeyboardEvent) {
     switch (event.key) {
-      case 'Tab':
-        if (!this.focusKeyManager.activeItem) {
-          this.focusKeyManager.setFirstItemActive();
-          this._updateItemTabIndices();
-        }
-        break;
 
       case 'ArrowLeft':
-        if (this.focusKeyManager.activeItemIndex === this.index) {
-          this.previous();
-        }
+        this.previous();
         this.focusKeyManager.setPreviousItemActive();
         this._updateItemTabIndices();
         break;
 
       case 'ArrowRight':
-        if (this.focusKeyManager.activeItemIndex === this.index - 1) {
-          this.next();
-        }
+        this.next();
         this.focusKeyManager.setNextItemActive();
         this._updateItemTabIndices();
         break;
