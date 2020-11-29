@@ -4,11 +4,11 @@ import { AppRoute } from '../routing/app-route.interface';
 import { RoutingService } from '../routing/routing.service';
 
 @Component({
-  selector: 'app-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss']
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss']
 })
-export class NavigationComponent {
+export class SidebarComponent {
 
   routes$: Observable<AppRoute[]> = of([]);
 

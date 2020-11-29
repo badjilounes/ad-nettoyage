@@ -1,9 +1,9 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MailData } from '../../core/mailer/mailer.interface';
-import { MailerService } from '../../core/mailer/mailer.service';
 import { SnackbarService } from '../../core/snackbar/snackbar.service';
+import { MailData } from './mailer/mailer.interface';
+import { MailerService } from './mailer/mailer.service';
 
 @Component({
   selector: 'app-contact-form',

@@ -3,14 +3,17 @@ import { CommonModule, registerLocaleData } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import localeFr from '@angular/common/locales/fr';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { MaterialModule } from './material.module';
 import { AppMissingTranslationHandler } from './missing-translation.handler';
-import { NavigationComponent } from './navigation/navigation.component';
-import { RoutingService } from './routing/routing.service';
-import { ToolbarComponent } from './toolbar/toolbar.component';
+import { NavigationModule } from './navigation/navigation.module';
+import { RoutingService } from './navigation/routing/routing.service';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -18,30 +21,31 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 
 const modules = [
   CommonModule,
+  BrowserModule,
+  BrowserAnimationsModule,
+  ReactiveFormsModule,
+  FlexLayoutModule,
   RouterModule,
   HttpClientModule,
-  MaterialModule,
-  TranslateModule.forRoot({
-    loader: {
-      provide: TranslateLoader,
-      useFactory: HttpLoaderFactory,
-      deps: [HttpClient]
-    },
-    missingTranslationHandler: { provide: MissingTranslationHandler, useClass: AppMissingTranslationHandler }
-  }),
+  NavigationModule,
+  MatSnackBarModule,
 ];
 
 @NgModule({
-  declarations: [
-    NavigationComponent,
-    ToolbarComponent
+  imports: [
+    ...modules,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      },
+      missingTranslationHandler: { provide: MissingTranslationHandler, useClass: AppMissingTranslationHandler }
+    })
   ],
-  imports: modules,
   exports: [
-    MaterialModule,
-    TranslateModule,
-  ],
-  providers: [RoutingService],
+    ...modules,
+  ]
 })
 export class AppCoreModule {
   constructor(

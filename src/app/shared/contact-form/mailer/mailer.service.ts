@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import * as smtp from '../../../assets/js/smtp.js';
-import { environment } from '../../../environments/environment.js';
+import { environment } from '../../../../environments/environment.js';
 import { MailData } from './mailer.interface.js';
+import * as smtp from './smtp.js';
 
 @Injectable({
   providedIn: 'root'

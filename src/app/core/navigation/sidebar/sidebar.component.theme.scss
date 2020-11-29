@@ -1,6 +1,6 @@
 @import "~@angular/material/theming";
 
-@mixin navigation-theme($theme) {
+@mixin sidebar-theme($theme) {
   $accent: map-get($theme, accent);
   $is-dark-theme: map-get($theme, is-dark);
 

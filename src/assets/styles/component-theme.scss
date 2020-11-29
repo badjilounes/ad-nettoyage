@@ -1,10 +1,10 @@
-@import "../../app/core/navigation/navigation.component.theme.scss";
-@import "../../app/core/toolbar/toolbar.component.theme.scss";
+@import "../../app/core/navigation/sidebar/sidebar.component.theme.scss";
+@import "../../app/core/navigation/toolbar/toolbar.component.theme.scss";
 @import "../../app/core/carousel/carousel.component.theme.scss";
 @import "../../app/home/home.component.theme.scss";
 
 @mixin component-theme($theme) {
-  @include navigation-theme($theme);
+  @include sidebar-theme($theme);
   @include toolbar-theme($theme);
   @include carousel-theme($theme);
   @include home-theme($theme);

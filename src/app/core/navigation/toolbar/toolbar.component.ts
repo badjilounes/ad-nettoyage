@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BreakpointService } from '../breakpoint/breakpoint.service';
+import { BreakpointService } from '../../breakpoint/breakpoint.service';
 import { AppRoute } from '../routing/app-route.interface';
 
 @Component({
