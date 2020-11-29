@@ -2,7 +2,7 @@
 const express = require('express');
 const path = require('path');
 
-const root = 'ad-nettoyage';
+const root = 'dist/ad-nettoyage';
 const app = express();
 
 app.use(forceHttpsIfProxy);
