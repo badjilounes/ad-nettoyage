@@ -20,6 +20,7 @@ import * as Hammer from 'hammerjs';
 export class CarouselItem implements FocusableOption {
   @HostBinding('attr.role') readonly role = 'listitem';
   @HostBinding('style.width') width = '100%';
+  @HostBinding('style.height') height = '100%';
   @HostBinding('tabindex') tabindex = '-1';
 
   constructor(readonly carousel: Carousel, readonly element: ElementRef) {

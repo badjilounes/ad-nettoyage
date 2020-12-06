@@ -23,17 +23,23 @@ app-carousel {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
+  width: 100%;
 }
 
 .carousel-content-wrapper {
   position: relative;
+  overflow: hidden;
   width: 100%;
+  height: 100%;
 
   & .carousel-content {
     display: flex;
     flex-direction: row;
     overflow: hidden;
     outline: none;
+    width: 100%;
+    height: 100%;
   }
 
   & [carousel-item] {
@@ -45,7 +51,6 @@ app-carousel {
       overflow: hidden;
       height: 100%;
       width: 100%;
-      min-height: 650px;
 
       background-repeat: no-repeat;
       background-position: top;

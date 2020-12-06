@@ -1,19 +1,19 @@
 <div #contentWrapper (keyup)="onKeydown($event)" (swipeleft)="previous()" (swiperight)="next()"
   class="carousel-content-wrapper" role="region">
   <button (click)="previous()" aria-hidden="true" tabindex="-1" class="carousel-nav carousel-nav-prev" mat-mini-fab
-    aria-label="previous" color="accent" *ngIf="showArrows">
+    aria-label="previous" color="primary" *ngIf="showArrows">
     <mat-icon>navigate_before</mat-icon>
   </button>
   <div class="carousel-content" role="list" tabindex="0">
     <ng-content></ng-content>
     <div class="carousel-indicator-container">
       <button *ngFor="let item of items;let i = index" mat-mini-fab (click)="goTo(i)" aria-hidden="true" tabindex="-1"
-        [class]="index === i ? 'selected' : ''">
+        [class]="index === i ? 'selected' : ''" color="primary">
       </button>
     </div>
   </div>
   <button (click)="next()" aria-hidden="true" tabindex="-1" class="carousel-nav carousel-nav-next" mat-mini-fab
-    aria-label="next" color="accent" *ngIf="showArrows">
+    aria-label="next" color="primary" *ngIf="showArrows">
     <mat-icon>navigate_next</mat-icon>
   </button>
 </div>

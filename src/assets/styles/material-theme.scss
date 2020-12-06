@@ -3,10 +3,76 @@
 
 @include mat-core();
 
-$purple-green-primary: mat-palette($mat-purple);
-$purple-green-accent: mat-palette($mat-green, A200, A100, A400);
+$ad-green: (
+  50: #e8f5ee,
+  100: #c6e7d5,
+  200: #a1d7b9,
+  300: #7bc69d,
+  400: #5eba88,
+  500: #42ae73,
+  600: #3ca76b,
+  700: #339d60,
+  800: #2b9456,
+  900: #1d8443,
+  A100: #bfffd5,
+  A200: #8cffb3,
+  A400: #59ff91,
+  A700: #40ff80,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$ad-blue: (
+  50: #e0ecf5,
+  100: #b3cfe6,
+  200: #80b0d5,
+  300: #4d90c4,
+  400: #2678b7,
+  500: #0060aa,
+  600: #0058a3,
+  700: #004e99,
+  800: #004490,
+  900: #00337f,
+  A100: #adc7ff,
+  A200: #7aa4ff,
+  A400: #4781ff,
+  A700: #2d70ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+$purple-green-primary: mat-palette($ad-blue);
+$purple-green-accent: mat-palette($ad-green, A200, A100, A400);
 $purple-green-warn: mat-palette($mat-red, A200, A100, A400);
-$purple-green-theme: mat-dark-theme($purple-green-primary, $purple-green-accent, $purple-green-warn);
+$purple-green-theme: mat-light-theme($purple-green-primary, $purple-green-accent, $purple-green-warn);
 
 .purple-green {
   @include angular-material-theme($purple-green-theme);

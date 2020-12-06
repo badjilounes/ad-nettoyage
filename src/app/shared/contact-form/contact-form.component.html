@@ -1,6 +1,6 @@
 <mat-card>
 
-  <a mat-raised-button color="accent" class="phone" [href]="'tel:' + ('contact-form.phone' | translate)">
+  <a mat-raised-button color="primary" class="phone" [href]="'tel:' + ('contact-form.phone' | translate)">
     <mat-icon>phone</mat-icon>
     {{'contact-form.phone' | translate}}
   </a>
@@ -39,7 +39,7 @@
       <input matInput [ngxMatDatetimePicker]="picker" [placeholder]="'contact-form.date.label' | translate"
         formControlName="date" [min]="minDate">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <ngx-mat-datetime-picker #picker [color]="'accent'"></ngx-mat-datetime-picker>
+      <ngx-mat-datetime-picker #picker [color]="'primary'"></ngx-mat-datetime-picker>
     </mat-form-field>
 
     <mat-form-field>

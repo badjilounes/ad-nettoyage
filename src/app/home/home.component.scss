@@ -2,59 +2,6 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-
-  & .carousel-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-
-    & .overlay-container {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      position: absolute;
-
-      .overlay-content {
-        position: relative;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding-top: 100px;
-
-        div {
-          padding-right: 20px;
-          padding-left: 20px;
-        }
-
-        h3 {
-          font-size: 38px;
-          font-weight: 900;
-          text-transform: uppercase;
-          height: 60px;
-          margin-bottom: 40px;
-        }
-
-        h1 {
-          font-weight: 400;
-          height: 31px;
-          margin-bottom: 40px;
-        }
-
-        & a {
-          text-transform: uppercase;
-        }
-      }
-
-      .overlay-content:not(.handset) {
-        max-width: 1170px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-  }
+  height: 100%;
+  width: 100%;
 }

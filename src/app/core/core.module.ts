@@ -1,34 +1,27 @@
 import { NgxMatDateAdapter } from '@angular-material-components/datetime-picker';
-import { CommonModule, registerLocaleData } from '@angular/common';
+import { registerLocaleData } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import localeFr from '@angular/common/locales/fr';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
 import { MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppMissingTranslationHandler } from './missing-translation.handler';
 import { NavigationModule } from './navigation/navigation.module';
 import { RoutingService } from './navigation/routing/routing.service';
+import { SnackbarModule } from './snackbar/snackbar.module';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
 
 const modules = [
-  CommonModule,
+  NavigationModule,
+  SnackbarModule,
   BrowserModule,
   BrowserAnimationsModule,
-  ReactiveFormsModule,
-  FlexLayoutModule,
-  RouterModule,
   HttpClientModule,
-  NavigationModule,
-  MatSnackBarModule,
 ];
 
 @NgModule({

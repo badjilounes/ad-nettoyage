@@ -2,13 +2,11 @@
 
 @mixin carousel-theme($theme) {
   $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
 
   .carousel-indicator-container .mat-mini-fab.selected {
-    background-color: mat-color($accent, secondary-text);
+    background-color: mat-color($primary, secondary-text);
   }
 
   .carousel-indicator-container .mat-mini-fab:not(.selected) {

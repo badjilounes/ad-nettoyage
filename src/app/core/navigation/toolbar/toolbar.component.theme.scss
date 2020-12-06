@@ -1,17 +1,13 @@
 @import "~@angular/material/theming";
 
 @mixin toolbar-theme($theme) {
+  $primary: map-get($theme, primary);
+
   .mat-toolbar {
-    &.handset {
-      background: rgba(0, 0, 0, 0.75);
-      background-color: rgba(0, 0, 0, 0.4);
-    }
+    background-color: mat-color($primary, 800);
+    opacity: 0.75;
 
-    &:not(.handset) {
-      background: rgba(0, 0, 0, 0.4);
-      background-color: rgba(0, 0, 0, 0.75);
-    }
-
+    .mat-icon,
     a {
       color: white;
     }
