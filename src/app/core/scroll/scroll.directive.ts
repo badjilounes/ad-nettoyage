@@ -31,7 +31,7 @@ export class ScrollDirective implements AfterViewInit {
   }
 
   private resolveScrollDirection(previous: number, current: number, height: number): ScrollDirection {
-    let direction = (current - previous < 10) ? ScrollDirection.Up : ScrollDirection.Down;
+    let direction = (current - previous < 0) ? ScrollDirection.Up : ScrollDirection.Down;
 
     if (current < 1) {
       direction = ScrollDirection.Up;
