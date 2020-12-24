@@ -18,7 +18,7 @@ export class ScrollDirective implements AfterViewInit {
   ) { }
 
   ngAfterViewInit(): void {
-    const scrollHeight = this.elementRef.nativeElement.scrollHeight;
+    const scrollHeight = this.elementRef.nativeElement.scrollHeight + this.elementRef.nativeElement.scrollTop;
 
     fromEvent(this.elementRef.nativeElement, 'scroll').pipe(
       throttleTime(10),
@@ -31,13 +31,9 @@ export class ScrollDirective implements AfterViewInit {
   }
 
   private resolveScrollDirection(previous: number, current: number, height: number): ScrollDirection {
-    let direction = (current < previous ? ScrollDirection.Up : ScrollDirection.Down);
+    let direction = (current - previous < 10) ? ScrollDirection.Up : ScrollDirection.Down;
 
-    if (current === height) {
-      direction = ScrollDirection.Down;
-    }
-
-    if (current === 0) {
+    if (current < 1) {
       direction = ScrollDirection.Up;
     }
 
