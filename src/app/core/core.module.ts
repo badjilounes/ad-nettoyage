@@ -38,7 +38,7 @@ const modules = [
   ],
   exports: [
     ...modules,
-  ]
+  ],
 })
 export class AppCoreModule {
   constructor(

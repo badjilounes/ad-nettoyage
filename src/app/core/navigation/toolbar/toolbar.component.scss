@@ -1,13 +1,24 @@
 .mat-toolbar {
   position: fixed;
-  top: 0;
   left: 0;
+  top: 0;
   z-index: 10;
   height: 100px;
 }
 
-.mat-toolbar.handset .right-container a {
-  display: none;
+.mat-toolbar.handset {
+  transition: all ease-in-out 250ms;
+  &:not(.hidden) {
+    transform: translateY(0);
+  }
+
+  &.hidden {
+    transform: translateY(-100%);
+  }
+
+  & .right-container a {
+    display: none;
+  }
 }
 
 .mat-toolbar:not(.handset) {

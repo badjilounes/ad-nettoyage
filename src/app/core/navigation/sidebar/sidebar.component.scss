@@ -13,3 +13,10 @@
 .mat-drawer-content {
   flex-direction: column;
 }
+
+.app-content {
+  position: relative;
+  height: 100%;
+  display: block;
+  overflow: auto;
+}
