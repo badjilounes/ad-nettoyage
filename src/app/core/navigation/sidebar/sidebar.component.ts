@@ -21,11 +21,12 @@ export class SidebarComponent {
     this.routing.updateRoutesForMenu();
   }
 
-  onScroll(event: ScrollDirection): void {
+  onScroll(event: ScrollDirection): boolean {
     if (event === ScrollDirection.Down) {
       this.showToolbar.next(false);
     } else {
       this.showToolbar.next(true);
     }
+    return true;
   }
 }
