@@ -1,6 +1,6 @@
 import { AfterViewInit, Directive, ElementRef, EventEmitter, Output } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { distinctUntilChanged, map, pairwise, share, throttleTime } from 'rxjs/operators';
+import { distinctUntilChanged, map, pairwise, share } from 'rxjs/operators';
 import { ScrollDirection } from './scroll-direction.enum';
 
 
@@ -19,7 +19,6 @@ export class ScrollDirective implements AfterViewInit {
 
   ngAfterViewInit(): void {
     fromEvent(this.elementRef.nativeElement, 'scroll').pipe(
-      throttleTime(10),
       map(() => this.elementRef.nativeElement.scrollTop),
       pairwise(),
       map(([previous, current]): ScrollDirection => this.resolveScrollDirection(previous, current)),
